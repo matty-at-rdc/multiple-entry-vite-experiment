@@ -6,5 +6,6 @@ node_modules
 build
 dist
 static
-pycache
+__pycache__
+*.pyc
 
