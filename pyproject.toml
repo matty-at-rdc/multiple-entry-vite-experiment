@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "multiple-entry-vite-experiment"
+version = "0.1.0"
+description = ""
+authors = ["Matthew Cale <matt.cale@move.com>"]
+readme = "README.md"
+packages = [{include = "multiple_entry_vite_experiment"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

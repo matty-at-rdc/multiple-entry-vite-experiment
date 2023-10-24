@@ -1,0 +1,10 @@
+# Env
+node_modules
+.venv
+
+# Build Artifacts 
+build
+dist
+static
+pycache
+
