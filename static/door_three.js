@@ -1,0 +1,1 @@
+import{_ as o,a as e,b as t}from"./assets/react-dom-7c4a2174.js";const r=o.jsx,s=()=>r("div",{className:"door-three",children:r("h1",{children:"Door Three"})}),_=o.jsx;e.__esModule?e.default:e;const c=t.render;c(_(s,{}),document.getElementById("main"));
