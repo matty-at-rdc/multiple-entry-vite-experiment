@@ -4,12 +4,12 @@ import react from "@vitejs/plugin-react-swc"
 
 const inputNames = ["door_one", "door_two", "door_three"]
 
-export const mapCSSFileNamesGenerateBundle = {
-  name: 'mapCSSFileNamesGenerateBundle',
+export const mapCSSFileNames = {
+  name: 'mapCSSFileNames',
   generateBundle(opts, bundle) {
+    const cssNamesMap = {}
 
-    let cssNamesMap = {}
-
+    // This is dumb... why do I have to do this... oh golly im so clueless..
     Object.entries(bundle).forEach(([fileName, fileInfo]) => {
       if (inputNames.includes(fileInfo.name)) {        
         const ambiguous_css_name = [...fileInfo.viteMetadata.importedCss][0]
@@ -20,11 +20,6 @@ export const mapCSSFileNamesGenerateBundle = {
       }
     })
   },
-}
-
-
-export const mapCSSFileNamesWriteBundle = {
-  name: 'mapCSSFileNamesWriteBundle',
   writeBundle(opts, bundle) {
     const cssNamesMap = {}
 
@@ -39,6 +34,7 @@ export const mapCSSFileNamesWriteBundle = {
       const cssFileNames = Object.keys(cssNamesMap)
       if(fileName.endsWith(".html")) {
         cssFileNames.forEach((cssFileName) => {
+
           if(fileInfo.source.includes(cssFileName)) {
             console.log(`Pattern: ${cssFileName} found in ${fileName} replacing it with: ${cssNamesMap[cssFileName]}`);
             fileInfo.source = fileInfo.source.replace(cssFileName, cssNamesMap[cssFileName])
@@ -72,8 +68,7 @@ export default defineConfig(({ mode }) => {
       react({
         include: [/\.jsx?$/, /\.js$/],
       }),
-      mapCSSFileNamesGenerateBundle,
-      mapCSSFileNamesWriteBundle,
+      mapCSSFileNames,
     ],
     resolve: {
       alias: {
