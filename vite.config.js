@@ -40,7 +40,7 @@ export const mapCSSFileNamesWriteBundle = {
       if(fileName.endsWith(".html")) {
         cssFileNames.forEach((cssFileName) => {
           if(fileInfo.source.includes(cssFileName)) {
-            console.log(`Pattern: ${cssFileName} found in ${fileName}`);
+            console.log(`Pattern: ${cssFileName} found in ${fileName} replacing it with: ${cssNamesMap[cssFileName]}`);
             fileInfo.source = fileInfo.source.replace(cssFileName, cssNamesMap[cssFileName])
           }
         })
@@ -84,6 +84,5 @@ export default defineConfig(({ mode }) => {
       disabled: false,
     },
   }
-
   return config
 })
